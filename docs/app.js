@@ -143,6 +143,7 @@ function renderTimeline() {
 
     const block = document.createElement('div');
     block.className = 'timeline-block';
+    block.dataset.dog = item.dog;
     block.innerHTML = `
       <div class="block-header" onclick="toggleBlock(this.parentElement)">
         <span class="block-time">${formatTime12h(item.time)}</span>
