@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Sunny & Luna — Pawrent Guide</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     EMERGENCY OVERLAY — accessible from every page
+     ══════════════════════════════════════════════════════════ -->
+<div id="emergency-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Emergency Information">
+  <div class="overlay-backdrop" onclick="closeEmergency()"></div>
+  <div class="overlay-sheet">
+    <div class="overlay-header">
+      <span class="overlay-title">🚨 Emergency</span>
+      <button class="overlay-close" onclick="closeEmergency()" aria-label="Close">✕</button>
+    </div>
+    <div id="emergency-content" class="overlay-body"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     LIGHTBOX — full screen photo viewer
+     ══════════════════════════════════════════════════════════ -->
+<div id="lightbox" class="lightbox hidden" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close photo">✕</button>
+  <button class="lightbox-prev" onclick="lightboxNav(-1, event)" aria-label="Previous photo">‹</button>
+  <img id="lightbox-img" src="" alt="Dog photo" />
+  <button class="lightbox-next" onclick="lightboxNav(1, event)" aria-label="Next photo">›</button>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HELP OVERLAY — layman's guide
+     ══════════════════════════════════════════════════════════ -->
+<div id="help-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="How this works">
+  <div class="overlay-backdrop" onclick="closeHelp()"></div>
+  <div class="overlay-sheet">
+    <div class="overlay-header">
+      <span class="overlay-title">How This Works</span>
+      <button class="overlay-close" onclick="closeHelp()" aria-label="Close">✕</button>
+    </div>
+    <div class="overlay-body help-body">
+      <p><strong>What this is:</strong> A care guide for Sunny and Luna, built for anyone watching them — whether that's you at 7am or a dog sitter who just walked in the door. Everything you need is here. You don't need to install anything or know how to use an app.</p>
+
+      <h3>Using the Today page</h3>
+      <ol>
+        <li>Open the app. The <strong>What's Next</strong> block at the top tells you exactly what to do right now for each dog.</li>
+        <li>Below that is the full day's schedule — both dogs, in order.</li>
+        <li>Tap any schedule block to expand the full instructions for that task.</li>
+        <li>Experienced caretakers: scan and skip. New caretakers: tap everything.</li>
+      </ol>
+
+      <h3>WFH / Office toggle</h3>
+      <p>The small pill at the top of the screen says <strong>WFH</strong> or <strong>Office</strong>. Set it once in the morning based on whether the owner is home or away. It changes Luna's schedule — office days require midday coverage. When set to Office, a reminder banner appears at the top.</p>
+
+      <h3>Reading a schedule block</h3>
+      <p>Each block shows the time, which dog it's for, and the task. A <strong>NON-NEGOTIABLE</strong> badge means this task cannot be skipped or delayed — it affects Luna's training or Sunny's health directly.</p>
+      <p>Tap the block to see the full instructions.</p>
+
+      <h3>Finding emergency info</h3>
+      <p>There is a <strong>red 🚨 button in the bottom-right corner of every page</strong>. Tap it once for vet numbers, owner numbers, and what to do in specific situations. You can also reach it from the Emergency tab in the bottom navigation.</p>
+
+      <h3>Who to call</h3>
+      <p>Owner contacts are on the Emergency page. When in doubt, call. They would rather get a "just checking" text than a surprise.</p>
+
+      <h3>A note about Luna</h3>
+      <p>Luna is a young dog in active training. The protocols on her page — especially the biting protocol and crate schedule — are not suggestions. They are part of her development, and consistency across every caretaker is what makes them work. One person doing it differently sets back everyone's progress. Please follow them exactly.</p>
+
+      <h3>Adding photos</h3>
+      <ol>
+        <li>Rename your photo: <code>sunny-1.jpg</code> or <code>luna-1.jpg</code> (increment the number for each new one)</li>
+        <li>Drop it into the <code>/images</code> folder in the GitHub repo</li>
+        <li>Push to GitHub — it appears automatically in the carousel, gallery, and Today page background</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN APP SHELL
+     ══════════════════════════════════════════════════════════ -->
+<div id="app">
+
+  <!-- ── TODAY PAGE ──────────────────────────────────────── -->
+  <div id="page-today" class="page active">
+
+    <!-- Help link -->
+    <button class="help-link" onclick="openHelp()" aria-label="How this works">?</button>
+
+    <!-- Mode toggle -->
+    <div class="mode-bar">
+      <div class="mode-toggle">
+        <button id="btn-wfh" class="mode-btn active" onclick="setMode('wfh')">WFH</button>
+        <button id="btn-office" class="mode-btn" onclick="setMode('office')">Office</button>
+      </div>
+    </div>
+
+    <!-- Office day banner -->
+    <div id="office-banner" class="office-banner hidden">
+      <span>📋 In-office day — <strong>confirm midday coverage for Luna before you leave</strong></span>
+    </div>
+
+    <!-- What's Next hero -->
+    <div class="hero">
+      <div id="hero-bg" class="hero-bg" onclick="openHeroBgPhoto()"></div>
+      <div class="hero-content">
+        <div class="hero-label">What's Next</div>
+        <div id="whats-next" class="whats-next"></div>
+        <div id="current-time" class="current-time"></div>
+      </div>
+    </div>
+
+    <!-- Full day timeline -->
+    <div class="section-label">Full Day Schedule</div>
+    <div id="timeline" class="timeline"></div>
+
+    <div class="page-bottom-spacer"></div>
+  </div>
+
+  <!-- ── SUNNY PAGE ──────────────────────────────────────── -->
+  <div id="page-sunny" class="page">
+    <div class="dog-page-header" style="--dog-color: var(--sunny)">
+      <div id="sunny-carousel" class="carousel"></div>
+      <div class="dog-stats">
+        <h1 class="dog-name">Sunny</h1>
+        <div class="dog-stat-grid" id="sunny-stats"></div>
+      </div>
+    </div>
+    <div id="sunny-guide" class="care-guide"></div>
+    <div class="page-bottom-spacer"></div>
+  </div>
+
+  <!-- ── LUNA PAGE ───────────────────────────────────────── -->
+  <div id="page-luna" class="page">
+    <div class="dog-page-header" style="--dog-color: var(--luna)">
+      <div id="luna-carousel" class="carousel"></div>
+      <div class="dog-stats">
+        <h1 class="dog-name">Luna</h1>
+        <div class="dog-stat-grid" id="luna-stats"></div>
+      </div>
+    </div>
+    <div id="luna-guide" class="care-guide"></div>
+    <div class="page-bottom-spacer"></div>
+  </div>
+
+  <!-- ── PHOTOS PAGE ─────────────────────────────────────── -->
+  <div id="page-photos" class="page">
+    <div class="photos-header">
+      <h1>Sunny &amp; Luna</h1>
+    </div>
+    <div id="photo-grid" class="photo-grid"></div>
+    <div class="page-bottom-spacer"></div>
+  </div>
+
+  <!-- ── EMERGENCY PAGE ─────────────────────────────────── -->
+  <div id="page-emergency" class="page">
+    <div class="emergency-header">
+      <h1>Emergency</h1>
+    </div>
+    <div id="emergency-page-content" class="emergency-page-body"></div>
+    <div class="page-bottom-spacer"></div>
+  </div>
+
+</div><!-- /#app -->
+
+<!-- ── BOTTOM NAV ──────────────────────────────────────────── -->
+<nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+  <button class="nav-btn active" onclick="showPage('today')" data-page="today">
+    <span class="nav-icon">📅</span>
+    <span class="nav-label">Today</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('sunny')" data-page="sunny">
+    <span class="nav-icon">🐶</span>
+    <span class="nav-label">Sunny</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('luna')" data-page="luna">
+    <span class="nav-icon">🐾</span>
+    <span class="nav-label">Luna</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('photos')" data-page="photos">
+    <span class="nav-icon">📸</span>
+    <span class="nav-label">Photos</span>
+  </button>
+  <button class="nav-btn" onclick="showPage('emergency')" data-page="emergency">
+    <span class="nav-icon">🚨</span>
+    <span class="nav-label">Emergency</span>
+  </button>
+</nav>
+
+<!-- ── PERSISTENT EMERGENCY BUTTON ────────────────────────── -->
+<button class="emergency-fab" onclick="openEmergency()" aria-label="Open emergency information">🚨</button>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
