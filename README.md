@@ -2,7 +2,7 @@
 
 A mobile-first care guide and daily schedule site for Sunny and Luna. Built for owners, dog sitters, and anyone who has ever opened their phone at 7am and needed to immediately know what to do next.
 
-**Live site:** *(add URL here after enabling GitHub Pages in repo settings)*
+**Live site:** *([Live Site Here - How to be a Parent](https://tuckerrasbury.github.io/How-to-be-a-Pawrent/))*
 
 ---
 
