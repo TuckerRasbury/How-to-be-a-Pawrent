@@ -884,6 +884,71 @@ a { color: inherit; text-decoration: none; }
 }
 .help-body strong { color: var(--text); }
 
+/* ── TRAINING PAGE ────────────────────────────────────────── */
+.training-header {
+  padding: 24px 20px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.training-header h1 {
+  font-size: 28px;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.training-subtitle {
+  font-size: 13px;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.training-body {
+  padding-bottom: 8px;
+}
+.training-intro {
+  margin: 16px 16px 0;
+  padding: 14px 16px;
+  background: var(--luna-light);
+  border: 1px solid rgba(123, 104, 238, 0.2);
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-2);
+}
+.training-intro strong { color: var(--text); }
+
+/* YouTube embeds */
+.yt-section {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.yt-block-label {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+.yt-embed-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 */
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--shadow);
+}
+.yt-embed-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* ── HOVER STATES (desktop) ───────────────────────────────── */
 @media (hover: hover) {
   .timeline-block:hover,
