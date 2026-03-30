@@ -189,11 +189,20 @@ Do NOT: yell, push her away, play-wrestle through it, or let it "slide just this
 Without crate rest, she becomes overtired and bitey, and learning does not consolidate.
 
 Crate schedule (WFH day):
-• 8:00am – 9:30am — Crate rest #1 (90 min) with bully stick or frozen Kong
+• 8:00am – 9:30am — Crate rest #1 (90 min)
 • 11:30am – 1:00pm — Crate rest #2 (90 min)
 • Bedtime: 8:30pm — last potty, then crate for the night
 
 Crate rest is non-negotiable even if she seems fine. Especially then.
+
+What to put in the crate with her:
+Luna is actively teething and needs appropriate things to chew. Give her one or two of the following each time she goes in:
+• A Kong stuffed with her kibble and a few treats
+• A high-value treat like a pupperoni
+• A rubber or bone chewing stick
+• A frozen Kong stuffed with food, treats, and toppers (best choice when you'll be away for a while)
+
+These are not extras — they channel her need to bite toward the right thing while her adult teeth are coming in. When she's chewing what she's supposed to, praise her calmly and then leave her alone. Don't hover. The goal is for her to settle and self-soothe.
 
 Where she sleeps overnight: [PLACEHOLDER: crate in bedroom / elsewhere / not yet overnight trained]`,
       },
@@ -346,7 +355,15 @@ Move with purpose. Keep her engaged but you stay in charge.`,
       activity: 'Crate rest #1',
       nonNeg: true,
       details: `90 minutes. Door closed.
-Give her a bully stick or a frozen Kong to settle with.
+
+Give her something appropriate to chew — pick one or two:
+• Kong stuffed with her kibble and a few treats
+• A pupperoni or other high-value treat
+• A rubber or bone chewing stick
+• Frozen Kong stuffed with food, treats, and toppers (great if you need to step away)
+
+Luna is teething. Chewing is how she relieves that pressure — giving her the right thing now prevents her from finding the wrong thing later. When she's chewing what she's supposed to: praise her calmly, then leave her alone to settle.
+
 She may whine briefly — this is normal. Do not let her out until time is up unless there is an emergency.
 This rest is non-negotiable. Her brain needs to consolidate what she just learned.`,
     },
@@ -376,8 +393,12 @@ Mental work is not optional. It is more tiring and more valuable than physical e
       dog: 'luna',
       activity: 'Crate rest #2',
       nonNeg: true,
-      details: `90 minutes. Door closed. Same as crate rest #1.
-She should settle faster this time.`,
+      details: `90 minutes. Door closed.
+
+Same comfort items as crate rest #1 — Kong with kibble/treats, pupperoni, chewing stick, or frozen Kong. A frozen Kong is especially useful here if you have other things to get done; it keeps her busy and calm without you needing to be nearby.
+
+Praise her calmly when she's chewing what she should, then walk away and let her settle.
+She should go down faster this time.`,
     },
     {
       time: '13:00',
@@ -442,6 +463,9 @@ This helps him make it through the night without a potty accident.`,
       nonNeg: true,
       details: `Quick yard potty. Keep it calm and boring — no play.
 Then straight to crate for the night.
+
+Give her something to chew as she settles — a chewing stick (rubber or bone) or a lightly stuffed Kong works well overnight. If she wakes up in the early hours, having something to chew helps her self-soothe and go back down without needing attention. Praise her calmly when she takes it, then leave her to it.
+
 [PLACEHOLDER: where does Luna sleep — crate in bedroom, elsewhere?]`,
     },
   ],
@@ -482,7 +506,12 @@ Tug with Drop It, quick recall reps. Wrap up with time to spare before you have 
       dog: 'luna',
       activity: 'Crate with Kong + puzzle feeder',
       nonNeg: true,
-      details: `Luna goes in crate before you leave. Frozen Kong + puzzle feeder.
+      details: `Luna goes in crate before you leave.
+
+Give her a frozen Kong stuffed with food, treats, and toppers — this is the best option for a longer stretch alone. It takes time to work through, keeps her focused on the right thing, and helps her settle without needing you there. You can also add a chewing stick (rubber or bone) or a pupperoni alongside it.
+
+Luna is teething. Having appropriate chew items in the crate is not optional comfort — it actively channels her biting urge. When you're putting her in, praise her calmly once she takes the Kong or chew, then leave without a fuss.
+
 MIDDAY COVERAGE REQUIRED — do not leave without confirming someone is coming.`,
     },
     {
@@ -539,7 +568,10 @@ No rough play after 7pm.`,
       dog: 'luna',
       activity: 'Last potty + crate for bed',
       nonNeg: true,
-      details: `Quick yard potty, then crate for the night.`,
+      details: `Quick yard potty. Keep it calm — no play.
+Then straight to crate for the night.
+
+Give her a chewing stick (rubber or bone) or a lightly stuffed Kong to settle with. A frozen Kong works well here too. Praise her calmly once she takes it, then leave her to wind down. Having something to chew helps her self-soothe if she stirs in the night.`,
     },
   ],
 };
