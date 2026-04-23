@@ -23,6 +23,9 @@
   --emergency-light: #FFF5F5;
   --non-neg: #C53030;
   --non-neg-bg: #FFF5F5;
+  --routines: #4A9B78;
+  --routines-light: #EAF5F0;
+  --routines-dark: #2E6E52;
 
   --radius: 14px;
   --radius-sm: 8px;
@@ -956,6 +959,193 @@ a { color: inherit; text-decoration: none; }
     box-shadow: 0 4px 16px rgba(100, 70, 30, 0.12);
     transition: box-shadow 0.2s ease;
   }
+}
+
+/* ── STRESS LADDER ─────────────────────────────────────────── */
+.ladder-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid;
+  margin-bottom: 3px;
+}
+
+.ladder-1 { border-left: 3px solid var(--routines); }
+.ladder-1 .ladder-label { background: var(--routines-light); color: var(--routines-dark); border-color: var(--routines); }
+
+.ladder-2 { border-left: 3px solid var(--sunny); }
+.ladder-2 .ladder-label { background: var(--sunny-light); color: var(--sunny-dark); border-color: var(--sunny); }
+
+.ladder-3 { border-left: 3px solid #E07B30; }
+.ladder-3 .ladder-label { background: #FEF0E6; color: #A0521A; border-color: #E07B30; }
+
+.ladder-4 { border-left: 3px solid var(--emergency); }
+.ladder-4 .ladder-label { background: var(--emergency-light); color: #9B2226; border-color: var(--emergency); }
+
+.ladder-5 { border-left: 3px solid #9B2226; }
+.ladder-5 .ladder-label { background: #FDF0F0; color: #6B0F10; border-color: #9B2226; }
+
+.ladder-trust {
+  background: var(--routines-light);
+  border-color: var(--routines);
+}
+.ladder-trust-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--routines-dark);
+  margin-bottom: 8px;
+}
+
+/* ── ROUTINE TIMELINE ─────────────────────────────────────── */
+.routine-timeline {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.routine-timeline::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 28px;
+  bottom: 28px;
+  width: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+
+.routine-step {
+  display: flex;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 12px;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--routines);
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  box-shadow: 0 1px 4px rgba(74,155,120,0.3);
+}
+
+.step-card {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(100,70,30,0.07);
+  cursor: pointer;
+}
+
+.step-header {
+  padding: 14px 16px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  flex: 1;
+}
+
+.step-time-badge {
+  background: var(--routines-light);
+  color: var(--routines-dark);
+  font-size: 11px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  padding: 3px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.step-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.step-chip {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.step-body {
+  display: none;
+  padding: 12px 16px 14px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.step-card.open .step-body { display: block; }
+
+.step-note {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.routine-footer {
+  margin: 4px 16px 16px;
+  background: var(--routines-light);
+  border: 1px solid var(--routines);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.routine-footer-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--routines-dark);
+  margin-bottom: 8px;
+}
+
+.routine-footer-text {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
 }
 
 /* ── UTILS ────────────────────────────────────────────────── */
